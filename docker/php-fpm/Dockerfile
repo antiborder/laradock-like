@@ -1,4 +1,4 @@
-FROM php:8.1-fpm
+FROM php:8.3-fpm
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
   libpq-dev \
@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-COPY --from=node:16 /usr/local/bin /usr/local/bin
-COPY --from=node:16 /usr/local/lib /usr/local/lib
+COPY --from=node:22 /usr/local/bin /usr/local/bin
+COPY --from=node:22 /usr/local/lib /usr/local/lib
 
 WORKDIR /var/www/html
